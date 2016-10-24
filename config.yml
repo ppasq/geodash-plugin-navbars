@@ -1,0 +1,12 @@
+---
+name: geodash-plugin-navbars
+controllers:
+  - GeoDashControllerMapNavbars.js
+directives:
+  - geodashMapNavbars.js
+templates:
+  - map_navbars.tpl.html
+less:
+  - map_navbars.less
+schemas:
+  - map_navbars.yml

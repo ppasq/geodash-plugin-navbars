@@ -1,0 +1,46 @@
+---
+navbars:
+  type: objectarray
+  label: Navbars
+  placeholder: "Navbars"
+  required: true
+  description: "Navbars"
+  schema:
+    verbose_singular: Navbar
+    verbose_plural: Navbars
+    fields:
+      - id: id
+        type: text
+        label: ID
+        placeholder: ID
+        required: true
+        description: "The id of your static overlay."
+      - { template: placement, overrides: {description: "Placement for the navbar." } }
+      - id: page
+        type: text
+        label: Page
+        placeholder: page
+        required: true
+        description: "The page (in geodash.pages array) for permalinking each tab."
+      - { template: intent, overrides: {description: "Intent for each tab." } }
+      - id: tabs
+        type: objectarray
+        label: Tabs
+        placeholder: "tabs"
+        description: "The tabs to show in the navbar"
+        schema:
+          verbose_singular: Tab
+          verbose_plural: Tabs
+          fields:
+            - id: value
+              type: text
+              label: Tab Value
+              placeholder: "value"
+              description: "The value of the tab."
+            - id: title
+              type: template
+              label: Tab Title
+              placeholder: "value"
+              description: "The title of the tab."
+            - { template: tooltip, overrides: {description: "Toolip for the navbar." } }
+            - { template: css, overrides: {description: "Additional CSS for each tab." }
