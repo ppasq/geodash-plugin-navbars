@@ -78,7 +78,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
         var intentName = intent.name;
         if(angular.isDefined(intentName))
         {
-          var intentProperties = extract("intent.properties", navbar);
+          var intentProperties = intent.properties;
           if(angular.isDefined(intentProperties))
           {
             var intentData = geodash.util.arrayToObject(intentProperties, {'$interpolate': $interpolate, 'ctx': {'tab': tab}});
