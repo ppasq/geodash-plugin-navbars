@@ -4,13 +4,13 @@
   <nav
     ng-repeat="navbar in dashboard.navbars track by $index"
     ng-class="class_navbar(navbar)"
-    ng-style="style_navbar(navbar)">
+    style="{{ style_navbar(navbar) }}">
     <ul class="nav nav-justified geodash-radio-group">
       <li
         ng-repeat="tab in navbar.tabs track by $index">
         <a
           ng-class="class_tab(navbar, tab)"
-          ng-style="style_tab(navbar, tab)"
+          style="{{ style_tab(navbar, tab) }}"
           ng-href="{{ link(tab) }}"
           data-intents="{{ intents(navbar, tab) | json : 0 }}"
           data-intent-ctrl="geodash-map-navbars"
