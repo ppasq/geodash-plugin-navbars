@@ -15,10 +15,8 @@
     border: 0;
 
     li {
-      vertical-align: bottom;
 
       a {
-        border-radius: 6px 6px 0px 0px;
         transition: width @geodash-map-navbar-transition ease-in-out;
         transition: height @geodash-map-navbar-transition ease-in-out;
       }
@@ -40,6 +38,27 @@
       }
     }
 
+  }
+
+  .geodash-map-navbar.geodash-placement-top {
+
+    li {
+      vertical-align: top;
+
+      a {
+        border-radius: 0px 0px 6px 6px;
+      }
+    }
+  }
+
+  .geodash-map-navbar.geodash-placement-bottom {
+
+    li {
+      vertical-align: bottom;
+
+      a {
+        border-radius: 6px 6px 0px 0px;
+    }
   }
 
 }
