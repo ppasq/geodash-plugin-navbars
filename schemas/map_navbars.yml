@@ -43,4 +43,4 @@ navbars:
               placeholder: "value"
               description: "The title of the tab."
             - { template: tooltip, overrides: {description: "Toolip for the navbar." } }
-            - { template: css, overrides: {description: "Additional CSS for each tab." }
+            - { template: css, overrides: {description: "Additional CSS for each tab." } }
