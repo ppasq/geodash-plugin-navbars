@@ -69,7 +69,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     }
     else
     {
-      return 'btn btn-default geodash-intent geodash-radio';
+      return 'btn btn-default geodash-intent';
     }
   };
 

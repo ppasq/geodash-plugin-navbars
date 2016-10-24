@@ -5,7 +5,8 @@
     ng-repeat="navbar in dashboard.navbars track by $index"
     ng-class="class_navbar(navbar)"
     style="{{ style_navbar(navbar) }}">
-    <ul class="nav nav-justified geodash-radio-group">
+    <ul
+      class="{{ navbar | extract : 'switch' | ternary_defined : 'nav nav-justified geodash-radio-group' : 'nav nav-justified' }}">
       <li
         ng-repeat="tab in navbar.tabs track by $index">
         <a
