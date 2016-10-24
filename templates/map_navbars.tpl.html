@@ -11,7 +11,7 @@
         <a
           ng-class="class_tab(navbar, tab)"
           ng-style="style_tab(navbar, tab)"
-          ng-href="link(tab)"
+          ng-href="{{ link(tab) }}"
           data-intents="{{ intents(navbar, tab) | json : 0 }}"
           data-intent-ctrl="geodash-map-navbars"
           data-intent-class-on="btn-primary selected"

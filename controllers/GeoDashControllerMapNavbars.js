@@ -56,14 +56,21 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
 
   $scope.class_tab = function(navbar, tab)
   {
-     if(tab.value == extract(navbar.switch, $scope))
-     {
-       return 'btn btn-primary selected geodash-intent geodash-radio geodash-on';
-     }
-     else
-     {
-       return 'btn btn-default geodash-intent geodash-radio';
-     }
+    if(angular.isDefined(navbar.switch))
+    {
+      if(tab.value == extract(navbar.switch, $scope))
+      {
+        return 'btn btn-primary selected geodash-intent geodash-radio geodash-on';
+      }
+      else
+      {
+        return 'btn btn-default geodash-intent geodash-radio';
+      }
+    }
+    else
+    {
+      return 'btn btn-default geodash-intent geodash-radio';
+    }
   };
 
   $scope.style_tab = function(navbar, tab)
