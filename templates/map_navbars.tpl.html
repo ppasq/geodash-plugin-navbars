@@ -3,7 +3,8 @@
   class="geodash-map-navbars">
   <nav
     ng-repeat="navbar in dashboard.navbars track by $index"
-    ng-class="class_navbar(navbar)">
+    ng-class="class_navbar(navbar)"
+    ng-style="style_navbar(navbar)">
     <ul class="nav nav-justified geodash-radio-group">
       <li
         ng-repeat="tab in navbar.tabs track by $index">

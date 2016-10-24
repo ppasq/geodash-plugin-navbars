@@ -39,6 +39,21 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     return "geodash-map-navbar geodash-placement-"+placement;
   };
 
+  $scope.style_navbar = function(navbar)
+  {
+    var styleMap = {};
+
+    if(angular.isDefined(extract("css.properties", navbar)))
+    {
+      angular.extend(styleMap, geodash.util.arrayToObject(
+        extract("css.properties", navbar),
+        {'$interpolate': $interpolate, 'ctx': {'navbar': navbar}}
+      ));
+    }
+
+    return geodash.codec.formatCSS(styleMap);
+  };
+
   $scope.class_tab = function(navbar, tab)
   {
      if(tab.value == extract(navbar.switch, $scope))
@@ -58,7 +73,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     if(angular.isDefined(extract("css.properties", tab)))
     {
       angular.extend(styleMap, geodash.util.arrayToObject(
-        extract("css.properties", overlay),
+        extract("css.properties", tab),
         {'$interpolate': $interpolate, 'ctx': {'tab': tab}}
       ));
     }
