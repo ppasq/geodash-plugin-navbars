@@ -66,15 +66,32 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     return geodash.codec.formatCSS(styleMap);
   };
 
-  $scope.intentData = function(navbar, tab)
+  $scope.intents = function(navbar, tab)
   {
-    var intentData = undefined;
-    var intentProperties = extract("intent.properties", navbar);
-    if(angular.isDefined(intentProperties))
+    var data = [];
+    var intents = extract("intents", navbar);
+    if(Array.isArray(intents))
     {
-      intentData = geodash.util.arrayToObject(intentProperties, {'$interpolate': $interpolate, 'ctx': {'tab': tab}});
+      for(var i = 0; i < intents.length; i++)
+      {
+        var intent = intents[i];
+        var intentName = intent.name;
+        if(angular.isDefined(intentName))
+        {
+          var intentProperties = extract("intent.properties", navbar);
+          if(angular.isDefined(intentProperties))
+          {
+            var intentData = geodash.util.arrayToObject(intentProperties, {'$interpolate': $interpolate, 'ctx': {'tab': tab}});
+            data.push({ "name": intent.name, "data": intentData });
+          }
+          else
+          {
+            data.push({ "name": intent.name });
+          }
+        }
+      }
     }
-    return intentData;
+    return data;
   };
 
 };
