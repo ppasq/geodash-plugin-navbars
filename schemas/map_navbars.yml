@@ -22,8 +22,9 @@ navbars:
         placeholder: page
         required: true
         description: "The page (in geodash.pages array) for permalinking each tab."
-      - { template: intents, overrides: {description: "Intent for each tab." } }
-      - { template: css, overrides: {description: "Additional CSS for each navbar." } }
+      - { template: link, overrides: { description: "Link for each tab." } }
+      - { template: intents, overrides: { description: "Intent for each tab." } }
+      - { template: css, overrides: { description: "Additional CSS for each navbar." } }
       - id: tabs
         type: objectarray
         label: Tabs

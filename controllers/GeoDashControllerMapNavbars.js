@@ -91,7 +91,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
   $scope.intents = function(navbar, tab)
   {
     var data = [];
-    var intents = extract("intents", navbar);
+    var intents = extract("intents", tab) || extract("intents", navbar);
     if(Array.isArray(intents))
     {
       for(var i = 0; i < intents.length; i++)
