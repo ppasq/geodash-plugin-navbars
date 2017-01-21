@@ -36,7 +36,11 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
   $scope.class_navbar = function(navbar)
   {
     var placement = extract("placement", navbar, "bottom");
-    return "geodash-map-navbar geodash-placement-"+placement;
+    var str = "row geodash-map-navbar geodash-placement-"+placement
+    if(angular.isDefined(extract("switch", navbar))) {
+      str += " geodash-radio-group";
+    }
+    return str;
   };
 
   $scope.style_navbar = function(navbar)
