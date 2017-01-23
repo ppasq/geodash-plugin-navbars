@@ -6,6 +6,13 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
   $scope.dashboard = geodash.util.deepCopy(mainScope.dashboard);
   $scope.state = geodash.util.deepCopy(mainScope.state);
   $scope.months = MONTHS_ALL;
+  $scope.default_tooltip_placement =
+  {
+    "top": "bottom",
+    "left": "right",
+    "bottom": "top",
+    "right": "left"
+  };
 
   $scope.$on("refreshMap", function(event, args)
   {
@@ -35,11 +42,25 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
 
   $scope.class_navbar = function(navbar)
   {
+    var str = "geodash-map-navbar";
+
     var placement = extract("placement", navbar, "bottom");
-    var str = "row geodash-map-navbar geodash-placement-"+placement
+
+    str += " geodash-placement-"+placement;
+
     if(angular.isDefined(extract("switch", navbar))) {
       str += " geodash-radio-group";
     }
+
+    if(placement == "left" || placement == "right")
+    {
+      str += " container-fluid";
+    }
+    else // if(placement == "left" || placement == "right")
+    {
+      str += " row";
+    }
+
     return str;
   };
 
@@ -58,23 +79,45 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     return geodash.codec.formatCSS(styleMap);
   };
 
+  $scope.class_tab_wrapper = function(navbar, tab)
+  {
+    var placement = extract("placement", navbar, "bottom");
+    if(placement == "left" || placement == "right")
+    {
+      return "row";
+    }
+    else // if(placement == "left" || placement == "right")
+    {
+      return "col";
+    }
+  };
+
   $scope.class_tab = function(navbar, tab)
   {
+    var str = "btn";
+
     if(angular.isDefined(navbar.switch))
     {
       if(tab.value == extract(navbar.switch, $scope))
       {
-        return 'btn btn-primary selected geodash-intent geodash-radio geodash-on';
+        str += ' btn-primary selected geodash-intent geodash-radio geodash-on';
       }
       else
       {
-        return 'btn btn-default geodash-intent geodash-radio';
+        str += ' btn-default geodash-intent geodash-radio';
       }
     }
     else
     {
-      return 'btn btn-default geodash-intent';
+      str += ' btn-default geodash-intent';
     }
+
+    var placement = extract("placement", navbar, "bottom");
+    if(placement == "left" || placement == "right")
+    {
+      str += " col";
+    }
+    return str;
   };
 
   $scope.style_tab = function(navbar, tab)
@@ -91,6 +134,15 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
 
     return geodash.codec.formatCSS(styleMap);
   };
+
+  $scope.tab_tooltip_placement = function(navbar, tab)
+  {
+    return extract(
+      "tooltip.placement",
+      tab,
+      $scope.default_tooltip_placement[extract("placement", navbar, "bottom")]
+    );
+  }
 
   $scope.intents = function(navbar, tab)
   {

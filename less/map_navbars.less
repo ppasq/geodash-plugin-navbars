@@ -26,23 +26,30 @@
         cursor: pointer;
       }
 
-      a:hover {
-        height: 60px;
-        line-height: 38px;
-      }
-
      a.btn-default {
        color: @geodash-map-navbar-button-color;
        background: @geodash-map-navbar-button-background;
      }
 
+     a.selected {
+       background: rgb(51, 122, 183);
+     }
+
+    }
+
+  }
+
+  .geodash-map-navbar.geodash-placement-top, .geodash-map-navbar.geodash-placement-bottom {
+    div {
+      a:hover {
+        height: 60px;
+        line-height: 38px;
+      }
       a.selected {
         height: 60px;
         line-height: 38px;
-        background: rgb(51, 122, 183);
       }
     }
-
   }
 
   .geodash-map-navbar.geodash-placement-top {

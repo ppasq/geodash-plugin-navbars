@@ -7,7 +7,7 @@
     style="{{ style_navbar(navbar) }}">
     <div
       ng-repeat="tab in navbar.tabs track by $index"
-      class="col"
+      ng-class="class_tab_wrapper(navbar, tab)"
       style="padding:0;">
       <a
         ng-class="class_tab(navbar, tab)"
@@ -18,7 +18,7 @@
         data-intent-class-on="btn-primary selected"
         data-intent-class-off="btn-default"
         data-toggle="{{ tab.tooltip | ternary_defined : 'tooltip': '' }}"
-        data-placement="{{ tab | extract : 'tooltip' : 'placement' | default_if_undefined_or_blank : '' }}"
+        data-placement="{{ tab_tooltip_placement(navbar, tab) }}"
         ng-attr-title="{{ tab | extract : 'tooltip' : 'content' | default_if_undefined_or_blank : '' }}"
         ng-bind-html="tab.title | md2html"></a>
     </div>
