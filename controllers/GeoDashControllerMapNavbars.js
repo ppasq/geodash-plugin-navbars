@@ -19,7 +19,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     $scope.state = geodash.util.deepCopy(args.state);
   });
 
-  $scope.link = function(navbar, tab)
+  $scope.link_url = function(navbar, tab)
   {
     var name = extract("page", navbar);
     if(angular.isDefined(name))
@@ -36,7 +36,19 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     }
     else
     {
-      return "";
+      return extract("link.url", tab, "");
+    }
+  };
+  $scope.link_target = function(navbar, tab)
+  {
+    var name = extract("page", navbar);
+    if(angular.isDefined(name))
+    {
+      return "_self";
+    }
+    else
+    {
+      return extract("link.target", tab, "");
     }
   };
 
@@ -100,16 +112,21 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     {
       if(tab.value == extract(navbar.switch, $scope))
       {
-        str += ' btn-primary selected geodash-intent geodash-radio geodash-on';
+        str += ' btn-primary selected geodash-radio geodash-on';
       }
       else
       {
-        str += ' btn-default geodash-intent geodash-radio';
+        str += ' btn-default geodash-radio';
       }
     }
     else
     {
-      str += ' btn-default geodash-intent';
+      str += ' btn-default';
+    }
+
+    if(! angular.isDefined(extract("link", tab)))
+    {
+      str += " geodash-intent"
     }
 
     var placement = extract("placement", navbar, "bottom");
