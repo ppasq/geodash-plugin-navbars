@@ -104,6 +104,23 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     }
   };
 
+  $scope.style_tab_wrapper = function(navbar, tab)
+  {
+    var styleMap = {
+      "padding": "0"
+    };
+
+    if(angular.isDefined(extract("wrapper.css.properties", tab)))
+    {
+      angular.extend(styleMap, geodash.util.arrayToObject(
+        extract("wrapper.css.properties", tab),
+        {'$interpolate': $interpolate, 'ctx': {'navbar': navbar, 'tab': tab}}
+      ));
+    }
+
+    return geodash.codec.formatCSS(styleMap);
+  };
+
   $scope.class_tab = function(navbar, tab)
   {
     var str = "btn";
@@ -133,6 +150,19 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     if(placement == "left" || placement == "right")
     {
       str += " col";
+    }
+
+    var classes = extract("css.classes", tab);
+    if(angular.isDefined(classes))
+    {
+      if(angular.isString(classes))
+      {
+        str += " " + classes;
+      }
+      else if(Array.isArray(classes))
+      {
+        str += " " + classes.join(" ");
+      }
     }
     return str;
   };

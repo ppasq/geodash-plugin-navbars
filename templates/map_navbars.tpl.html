@@ -8,7 +8,7 @@
     <div
       ng-repeat="tab in navbar.tabs track by $index"
       ng-class="class_tab_wrapper(navbar, tab)"
-      style="padding:0;">
+      style="{{ style_tab_wrapper(navbar, tab) }}">
       <a
         ng-class="class_tab(navbar, tab)"
         style="{{ style_tab(navbar, tab) }}"
