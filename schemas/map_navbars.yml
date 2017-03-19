@@ -46,3 +46,12 @@ navbars:
               description: "The title of the tab."
             - { template: tooltip, overrides: {description: "Toolip for the navbar." } }
             - { template: css, overrides: {description: "Additional CSS for each tab." } }
+            - id: wrapper
+              type: object
+              label: Tab Wrapper
+              placeholder: ""
+              description: "Tab wrapper"
+              schema:
+                verbose_singular: Tab wrapper
+                fields:
+                  - { template: css, overrides: { description: "Additional CSS for each tab wrapper." } }

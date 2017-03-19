@@ -66,11 +66,24 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
 
     if(placement == "left" || placement == "right")
     {
-      str += " container-fluid";
+      str += "";
     }
     else // if(placement == "left" || placement == "right")
     {
-      str += " row";
+      str += " row no-gutters";
+    }
+
+    var classes = extract("css.classes", navbar);
+    if(angular.isDefined(classes))
+    {
+      if(angular.isString(classes))
+      {
+        str += " " + classes;
+      }
+      else if(Array.isArray(classes))
+      {
+        str += " " + classes.join(" ");
+      }
     }
 
     return str;
@@ -96,7 +109,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     var placement = extract("placement", navbar, "bottom");
     if(placement == "left" || placement == "right")
     {
-      return "row";
+      return "row no-gutters";
     }
     else // if(placement == "left" || placement == "right")
     {
@@ -147,10 +160,10 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     }
 
     var placement = extract("placement", navbar, "bottom");
-    if(placement == "left" || placement == "right")
+    /*if(placement == "left" || placement == "right")
     {
       str += " col";
-    }
+    }*/
 
     var classes = extract("css.classes", tab);
     if(angular.isDefined(classes))
@@ -164,6 +177,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
         str += " " + classes.join(" ");
       }
     }
+
     return str;
   };
 
