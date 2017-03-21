@@ -25,6 +25,12 @@ navbars:
       - { template: link, overrides: { description: "Link for each tab." } }
       - { template: intents, overrides: { description: "Intent for each tab." } }
       - { template: css, overrides: { description: "Additional CSS for each navbar." } }
+      - id: markdown
+        type: text
+        label: Markdown
+        placeholder: markdown
+        required: true
+        description: "Whether to treat tab titles as markdown.  Defaults to true."
       - id: tabs
         type: objectarray
         label: Tabs

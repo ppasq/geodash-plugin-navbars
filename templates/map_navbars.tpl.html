@@ -20,8 +20,9 @@
         data-intent-class-off="btn-default"
         data-toggle="{{ tab.tooltip | ternary_defined : 'tooltip': '' }}"
         data-placement="{{ tab_tooltip_placement(navbar, tab) }}"
+        data-container="{{ tab_tooltip_container(navbar, tab) }}"
         ng-attr-title="{{ tab | extract : 'tooltip' : 'content' | default_if_undefined_or_blank : '' }}"
-        ng-bind-html="tab.title | md2html"></a>
+        ng-bind-html="tab.title | md2html : markdown_tab(navbar, tab)"></a>
     </div>
   </div>
 </div>

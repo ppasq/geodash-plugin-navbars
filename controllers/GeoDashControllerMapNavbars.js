@@ -106,14 +106,29 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
 
   $scope.class_tab_wrapper = function(navbar, tab)
   {
-    var placement = extract("placement", navbar, "bottom");
-    if(placement == "left" || placement == "right")
+    var classes = extract("wrapper.css.classes", tab);
+    if(angular.isDefined(classes))
     {
-      return "row no-gutters";
+      if(angular.isString(classes))
+      {
+        return classes;
+      }
+      else if(Array.isArray(classes))
+      {
+        return classes.join(" ");
+      }
     }
-    else // if(placement == "left" || placement == "right")
+    else
     {
-      return "col";
+      var placement = extract("placement", navbar, "bottom");
+      if(placement == "left" || placement == "right")
+      {
+        return "row no-gutters";
+      }
+      else // if(placement == "left" || placement == "right")
+      {
+        return "col";
+      }
     }
   };
 
@@ -196,6 +211,26 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
     return geodash.codec.formatCSS(styleMap);
   };
 
+  $scope.markdown_tab = function(navbar, tab)
+  {
+    if(geodash.util.isDefined(extract("markdown", tab)))
+    {
+      return extract("markdown", tab) ? 1 : 0;
+    }
+
+    if(geodash.util.isDefined(extract("markdown", navbar)))
+    {
+      return extract("markdown", navbar) ? 1 : 0;
+    }
+
+    return 1;
+  };
+
+  $scope.tab_tooltip_container = function(navbar, tab)
+  {
+    return extract("tooltip.container", tab, "body");
+  };
+
   $scope.tab_tooltip_placement = function(navbar, tab)
   {
     return extract(
@@ -203,7 +238,7 @@ geodash.controllers.GeoDashControllerMapNavbars = function($scope, $element, $co
       tab,
       $scope.default_tooltip_placement[extract("placement", navbar, "bottom")]
     );
-  }
+  };
 
   $scope.intents = function(navbar, tab)
   {
