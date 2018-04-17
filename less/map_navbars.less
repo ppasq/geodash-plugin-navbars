@@ -3,15 +3,15 @@
 .geodash-map-navbars
 {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 
   .geodash-map-navbar {
     background: rgba(0,0,0,0);
     z-index: @geodash-map-control-z-index;
-    border-radius: 3px;
+    border-radius: 0;
     border: 0;
 
     li {
@@ -25,19 +25,25 @@
       }
 
       a:hover {
-        height: 60px;
-        line-height: 38px;
+        /*height: 60px;
+        line-height: 38px;*/
       }
 
      a.btn-default {
+       background: rgba(255,255,255,0.4);
+       border-radius: 0;
        color: @geodash-map-navbar-button-color;
-       background: @geodash-map-navbar-button-background;
+       font-weight: 400;
+       &:hover {
+         color: @wfp-color-primary;
+       }
      }
 
       a.selected {
-        height: 60px;
-        line-height: 38px;
-        background: rgb(51, 122, 183);
+        background: @wfp-color-primary;
+        border-radius: 0;
+        color: white;
+        font-weight: 400;
       }
     }
 
@@ -49,7 +55,7 @@
       vertical-align: top;
 
       a {
-        border-radius: 0px 0px 6px 6px;
+        border-radius: 0;
       }
     }
   }
@@ -60,7 +66,7 @@
       vertical-align: bottom;
 
       a {
-        border-radius: 6px 6px 0px 0px;
+        border-radius: 0;
       }
     }
   }
